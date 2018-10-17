@@ -13,6 +13,7 @@
  *  ad.user(userName).password(password);
  *  ad.user(userName).passwordNeverExpires();
  *  ad.user(userName).passwordExpires();
+ *  ad.user(userName).expirePassword();
  *  ad.user(userName).enable();
  *  ad.user(userName).disable();
  *  ad.user(userName).move(location);
@@ -83,6 +84,9 @@ module.exports = {
       },
       passwordExpires: () => {
         return this.enableUser(userName);
+      },
+      expirePassword: () => {
+        return this.expireUserPassword(userName);
       },
       enable: () => {
         return this.enableUser(userName);
