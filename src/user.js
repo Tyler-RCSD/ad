@@ -39,6 +39,10 @@ module.exports = {
         email,
         title,
         phone,
+        department,
+        employeeID,
+        extensionAttribute1,
+        extensionAttribute2,
         location
       } = opts;
 
@@ -78,6 +82,10 @@ module.exports = {
         uid: userName,
         title: title,
         telephone: phone,
+        department: department,
+        employeeID: employeeID,
+        extensionAttribute1: extensionAttribute1,
+        extensionAttribute2: extensionAttribute2,
         userPrincipalName: `${userName}@${this.config.domain}`,
         sAMAccountName: userName,
         objectClass: this.config.defaults.userObjectClass,
