@@ -86,7 +86,17 @@ module.exports = {
 			const opts = {
 				filter,
 			  	includeDeleted: false
-			};
+      };
+      if( config ) {
+        if( config.fields && config.fields.length ) {
+          if( (config.fields === 'all') || config.fields.includes( 'all' ) ) {
+            opts.attributes = ['*']
+            delete config.fields
+          } else {
+            opts.attributes = ['dn'].concat(config.fields)
+          }
+        }
+      }
 			try {
 				this.ad.find(opts, (err, results) => {
 					if (err) {
