@@ -22,8 +22,13 @@ module.exports = {
 			    url: this.config.url,
 			    tlsOptions: {
 			    	rejectUnauthorized: false
-			    }
-			});
+          },
+          reconnect: true
+      });
+      
+          client.on('error', function(err) {
+            console.warn('LDAP connection failed but it should reconnect', err);
+          });
 
 	        client.bind(this.config.user, this.config.pass, function(err, data) {  
 	        	resolve([err, client]);
