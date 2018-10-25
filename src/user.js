@@ -403,8 +403,9 @@ module.exports = {
       this.findUser(userName)
         .then(userObject => {
           let oldDN = userObject.dn;
+          let cn = userObject.cn.replace(/[,#+<>;="|[\]\\]/g, '\\$&')
           let baseDN = String(this.config.baseDN).replace(/dc=/g, 'DC=');
-          let newDN = `CN=${userObject.cn},${location}${baseDN}`;
+          let newDN = `CN=${cn},${location}${baseDN}`;
           return this._modifyDN(oldDN, newDN);
         })
         .then(result => {
