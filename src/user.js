@@ -43,6 +43,7 @@ module.exports = {
         employeeID,
         extensionAttribute1,
         extensionAttribute2,
+        physicalDeliveryOfficeName,
         location
       } = opts;
 
@@ -86,6 +87,7 @@ module.exports = {
         employeeID: employeeID,
         extensionAttribute1: extensionAttribute1,
         extensionAttribute2: extensionAttribute2,
+        physicalDeliveryOfficeName: physicalDeliveryOfficeName,
         userPrincipalName: `${userName}@${this.config.domain}`,
         sAMAccountName: userName,
         objectClass: this.config.defaults.userObjectClass,
@@ -148,7 +150,8 @@ module.exports = {
         department: "department",
         employeeID: "employeeID",
         extensionAttribute1: "extensionAttribute1",
-        extensionAttribute2: "extensionAttribute2"
+        extensionAttribute2: "extensionAttribute2",
+        physicalDeliveryOfficeName: "physicalDeliveryOfficeName"
 
       };
 
