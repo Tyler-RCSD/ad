@@ -66,6 +66,7 @@ module.exports = {
 
       const userObject = {
         cn: commonName,
+        displayName: `${lastName}\, ${firstName}`,
         givenName: firstName,
         sn: lastName,
         mail: email,
@@ -79,7 +80,7 @@ module.exports = {
         physicalDeliveryOfficeName: physicalDeliveryOfficeName,
         userPrincipalName: `${userName}@${this.config.domain}`,
         sAMAccountName: userName,
-        objectClass: this.config.defaults.userObjectClass,
+        objectClass: ["user","top","person","organizationalPerson"],
         userPassword: ssha.create(pass)
       };
 
