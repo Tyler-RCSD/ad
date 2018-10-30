@@ -49,26 +49,17 @@ module.exports = {
 
       let { passwordExpires, enabled } = opts;
 
-      if (commonName) {
-        let cnParts = String(commonName).split(' ');
-        firstName = firstName ? firstName : cnParts[0];
-        if (cnParts.length > 1) {
-          lastName = lastName ? lastName : cnParts[cnParts.length - 1];
-        }
-      } else {
-        if (firstName && lastName) {
-          commonName = `${firstName} ${lastName}`;
-        }
-      }
+      commonName = commonName.replace(/[,#+<>;="|[\]\\]/g, '\\$&')
 
       location = parseLocation(location);
 
       let valid =
         email && String(email).indexOf('@') === -1
           ? 'Invalid email address.'
-          : !commonName
-            ? 'A commonName is required.'
-            : !userName ? 'A userName is required.' : true;
+          : !commonName ? 'A commonName is required.'
+          : !firstName ? 'A firstName is required.'
+          : !lastName ? 'A lastName is required.'
+          : !userName ? 'A userName is required.' : true;
 
       if (valid !== true) {
         /* istanbul ignore next */
