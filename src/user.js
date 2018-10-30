@@ -49,14 +49,12 @@ module.exports = {
 
       let { passwordExpires, enabled } = opts;
 
-      commonName = commonName.replace(/[,#+<>;="|[\]\\]/g, '\\$&')
-
       location = parseLocation(location);
+      commonName = `${lastName}\, ${firstName}`
 
       let valid =
         email && String(email).indexOf('@') === -1
           ? 'Invalid email address.'
-          : !commonName ? 'A commonName is required.'
           : !firstName ? 'A firstName is required.'
           : !lastName ? 'A lastName is required.'
           : !userName ? 'A userName is required.' : true;

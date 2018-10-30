@@ -148,7 +148,8 @@ module.exports = {
 
 	async _addObject(name, location, object) {
 		return new Promise(async (resolve, reject) => {
-			let baseDN = String(this.config.baseDN).replace(/dc=/g, 'DC=');
+      let baseDN = String(this.config.baseDN).replace(/dc=/g, 'DC=');
+      name = name.replace(/[,#+<>;"|[\]\\]/g, '\\$&')
 			let fullDN = String(`${name},${location}${baseDN}`);
 			const [error, client] = await this._getBoundClient();
 			if (error) {
