@@ -136,7 +136,13 @@ module.exports = {
         email: 'mail',
         title: 'title',
         objectClass: 'objectClass',
-        userName: 'sAMAccountName'
+        userName: 'sAMAccountName',
+        department: "department",
+        employeeID: "employeeID",
+        extensionAttribute1: "extensionAttribute1",
+        extensionAttribute2: "extensionAttribute2",
+        physicalDeliveryOfficeName: "physicalDeliveryOfficeName"
+
       };
 
       let later = [];
