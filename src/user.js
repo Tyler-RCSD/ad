@@ -141,8 +141,9 @@ module.exports = {
         employeeID: "employeeID",
         extensionAttribute1: "extensionAttribute1",
         extensionAttribute2: "extensionAttribute2",
-        physicalDeliveryOfficeName: "physicalDeliveryOfficeName"
-
+        physicalDeliveryOfficeName: "physicalDeliveryOfficeName",
+        sAMAccountName: "sAMAccountName",
+        proxyAddresses: "proxyAddresses"
       };
 
       let later = [];
