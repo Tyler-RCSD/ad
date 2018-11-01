@@ -143,7 +143,8 @@ module.exports = {
         extensionAttribute2: "extensionAttribute2",
         physicalDeliveryOfficeName: "physicalDeliveryOfficeName",
         sAMAccountName: "sAMAccountName",
-        proxyAddresses: "proxyAddresses"
+        proxyAddresses: "proxyAddresses",
+        displayName: "displayName"
       };
 
       let later = [];
