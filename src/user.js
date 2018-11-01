@@ -180,7 +180,7 @@ module.exports = {
         if (operations.length < 1) {
           delete this._cache.users[currUserName];
           delete this._cache.users[userName];
-          resolve();
+          resolve({"success": true});
           return;
         }
         let next = operations.pop();
