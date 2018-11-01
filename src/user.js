@@ -199,6 +199,7 @@ module.exports = {
       this.findUser(currUserName)
         .then(data => {
           if (opts.commonName !== undefined) {
+            opts.commonName = opts.commonName.replace(/[,#+<>;="|[\]\\]/g, '\\$&')
             return this.setUserCN(currUserName, opts.commonName);
           }
         })
@@ -347,10 +348,11 @@ module.exports = {
       this.findUser(userName)
         .then(userObject => {
           let oldDN = userObject.dn;
-          let parts = String(oldDN).split(',');
-          parts.shift();
-          parts.unshift(`CN=${cn}`);
-          return this._modifyDN(oldDN, parts.join(','));
+          let newDN = oldDN.substring(3)
+          newDN = newDN.substring(newDN.indexOf("=") - 3, newDN.length)
+          newDN = `CN=${cn}` + newDN;
+          console.log(newDN)
+          return this._modifyDN(oldDN, newDN);
         })
         .then(result => {
           delete this._cache.users[userName];
