@@ -77,6 +77,7 @@ module.exports = {
 
   async addUserToGroup(userName, groupName) {
     return new Promise(async (resolve, reject) => {
+      userName = userName.length > 20 ? userName.substring(0, 20) : userName
       this.findUser(userName).then(userObject => {
         if (Object.keys(userObject).length < 1) {
           /* istanbul ignore next */
@@ -101,6 +102,7 @@ module.exports = {
 
   async removeUserFromGroup(userName, groupName) {
     return new Promise(async (resolve, reject) => {
+      userName = userName.length > 20 ? userName.substring(0, 20) : userName
       this.findUser(userName).then(userObject => {
         if (Object.keys(userObject).length < 1) {
           /* istanbul ignore next */

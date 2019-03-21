@@ -79,7 +79,7 @@ module.exports = {
         extensionAttribute2: extensionAttribute2,
         physicalDeliveryOfficeName: physicalDeliveryOfficeName,
         userPrincipalName: `${userName}@${this.config.domain}`,
-        sAMAccountName: userName,
+        sAMAccountName: userName.length > 20 ? userName.substring(0, 20) : userName,
         objectClass: ["user","top","person","organizationalPerson"],
         userPassword: ssha.create(pass)
       };
